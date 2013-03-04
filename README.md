@@ -30,7 +30,7 @@ Expliquons le code précédent:
 
 	$supportedLangages : un tableau contenant la liste des langues supportés (la liste est créer à votre choix)
 
-	$default : la langue par défaur
+	$default : la langue par défaut
 
 Exemple:
 ```php
