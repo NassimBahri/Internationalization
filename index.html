@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Internationalization by NassimBahri</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Internationalization</h1>
+        <h2>Internationnalider rapidement votre site en PHP</h2>
+        <a href="https://github.com/NassimBahri/Internationalization" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a name="a-propos" class="anchor" href="#a-propos"><span class="octicon octicon-link"></span></a>A propos</h1>
+
+<p>Vous souhaitez internationnaliser votre site en PHP et vous ne savez pas comment?
+Rien de complexe transformer rapidement le langage de votre site sans passer par d'autres libraies complexes (getText par exemple)</p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Il suffit de déplacer le fichier Langue.php dans votre répertoire de travail et de créer par la suite le dossier qui va contenir les fichiers de langues</p>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Etape 1 : Inclure la classe Langue.php dans vos fichiers de travail</p>
+
+<div class="highlight highlight-php"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">require_once</span> <span class="s1">'Langue.php'</span><span class="p">;</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+
+<p>Etape 2 : Initialiser la classe Langue avec les valeurs nécessaires</p>
+
+<div class="highlight highlight-php"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="nx">Langue</span><span class="o">::</span><span class="na">init</span><span class="p">(</span><span class="nv">$langageDir</span><span class="p">,</span><span class="nv">$supportedLangages</span><span class="p">,</span><span class="nv">$default</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+
+<p>Expliquons le code précédent:</p>
+
+<pre><code>$langageDir : le nom du répertoire contenant les fichiers de langue que vous allez créer
+
+$supportedLangages : un tableau contenant la liste des langues supportés (la liste est créer à votre choix)
+
+$default : la langue par défaut
+</code></pre>
+
+<p>Exemple:</p>
+
+<div class="highlight highlight-php"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="nx">Langue</span><span class="o">::</span><span class="na">init</span><span class="p">(</span><span class="s1">'lang'</span><span class="p">,</span><span class="k">array</span><span class="p">(</span><span class="s1">'fr'</span><span class="p">,</span><span class="s1">'en'</span><span class="p">,</span><span class="s1">'es'</span><span class="p">),</span><span class="s1">'en'</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+
+<p>Etape 3 : Créer les fichiers de langue</p>
+
+<p>Dans cette étape on crée un fichier pour chaque langue, par exemple si vous voulez créer un site en français et en anglais vous devez créer un fichier fr.php et un autre en.php que vous devez les placer dans le répertoire que vous avez choisi dans l'étape précédente dans ce cas le répertoire lang.
+Les fichiers de langues doivent être sous la forme suivante:</p>
+
+<div class="highlight highlight-php"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="c1">//Fichier fr.php</span>
+<span class="nv">$langue</span><span class="o">=</span><span class="k">array</span><span class="p">(</span>
+
+    <span class="s2">"Accueil"</span>                       <span class="o">=&gt;</span><span class="s2">"Page d'acceuil"</span><span class="p">,</span>
+    <span class="s2">"Veuillez saisir votre nom"</span>     <span class="o">=&gt;</span><span class="s2">"veuillez saisir votre nom"</span><span class="p">,</span>
+    <span class="s2">"Merci pour votre participation"</span><span class="o">=&gt;</span><span class="s2">"Merci pour votre parcicipation"</span>
+
+<span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+<span class="cp">&lt;?php</span>
+<span class="c1">//Fichier en.php</span>
+<span class="nv">$langue</span><span class="o">=</span><span class="k">array</span><span class="p">(</span>
+
+    <span class="s2">"Accueil"</span>                       <span class="o">=&gt;</span><span class="s2">"Home page"</span><span class="p">,</span>
+    <span class="s2">"Veuillez saisir votre nom"</span>     <span class="o">=&gt;</span><span class="s2">"Please enter your name"</span><span class="p">,</span>
+    <span class="s2">"Merci pour votre participation"</span><span class="o">=&gt;</span><span class="s2">"Thanks for your participation"</span>
+
+<span class="p">);</span>
+</pre></div>
+
+<p>Etape 4 : Afficher le texte</p>
+
+<div class="highlight highlight-php"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">echo</span> <span class="nx">_</span><span class="p">(</span><span class="s2">"Accueil"</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+
+<p>Etape 4 : Changer la langue</p>
+
+<p>Pour changer la langue vous pouvez adopter la démarche que vous voulez, par exemple tester avec des variables GET ou autres</p>
+
+<div class="highlight highlight-php"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'lang'</span><span class="p">])){</span>
+    <span class="nx">Langue</span><span class="o">::</span><span class="na">changeLocal</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'lang'</span><span class="p">]);</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+
+<p>Code complet</p>
+
+<div class="highlight highlight-php"><pre><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">include_once</span> <span class="s1">'Langue.php'</span><span class="p">;</span>
+<span class="nx">Langue</span><span class="o">::</span><span class="na">init</span><span class="p">(</span><span class="s1">'lang'</span><span class="p">,</span><span class="k">array</span><span class="p">(</span><span class="s1">'fr'</span><span class="p">,</span><span class="s1">'en'</span><span class="p">,</span><span class="s1">'es'</span><span class="p">),</span><span class="s1">'en'</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'lang'</span><span class="p">])){</span>
+    <span class="nx">Langue</span><span class="o">::</span><span class="na">changeLocal</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">'lang'</span><span class="p">]);</span>
+<span class="p">}</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+
+<p>Vous pouvez vous inspirer de l'exemple ci-joint.
+N'hésiter pas à la partager avec vos collégues</p>
+
+<h2>
+<a name="author" class="anchor" href="#author"><span class="octicon octicon-link"></span></a>Author</h2>
+
+<p><a href="https://www.facebook.com/Bahri.Nassim">Nassim Bahri</a> (<a href="http://www.linkedin.com/pub/nassim-bahri/32/b38/a11">LinkedIn</a>)</p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/NassimBahri/Internationalization/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/NassimBahri/Internationalization/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/NassimBahri/Internationalization"></a> is maintained by <a href="https://github.com/NassimBahri">NassimBahri</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
